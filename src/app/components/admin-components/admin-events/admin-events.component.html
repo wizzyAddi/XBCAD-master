@@ -1,0 +1,37 @@
+<app-admin-nav></app-admin-nav>
+<form>
+  <div class="container-fluid" style="width: 400px; margin-top: 50px; margin-bottom: 100px" >
+    <h2>Create an epic event </h2>
+    <div class="form-group">
+      <label for="">Event name</label>
+      <input type="text" class="form-control" [(ngModel)]="eventname" [ngModelOptions]="{standalone: true}" placeholder="Create en epic name" >
+    </div>
+    <div class="form-group">
+      <label for="">Description</label>
+      <input type="text" class="form-control" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" placeholder="Give it an epic description">
+    </div>
+    <div class="form-group">
+      <label for="">Date</label>
+      <input type="text" class="form-control" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" placeholder="Enter a date">
+    </div>
+    <div class="form-group text-center">
+      <label for="">How many will be available?</label>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-round" type="" (click)="onDecrement()" >-</button>
+        </div>
+        <div class="col" >
+          <input class="form-control text-center"value={{numberOfSeats}} >
+        </div>
+        <div class="col">
+          <button class="btn btn-round" type="" (click)="onIncrement()" >+</button>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <button class="btn btn-primary " style="text-align: center;" (click)="onSubmit()" >Submit</button>
+    </div>
+
+  </div>
+
+</form>

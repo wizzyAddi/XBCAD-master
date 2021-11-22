@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<app-countdown-clock></app-countdown-clock>
+<form>
+  <div class="container-fluid" style="width: 400px; margin-top: 50px; margin-bottom: 100px" >
+    <div class="form-group">
+      <label for="">Firstname</label>
+      <input type="text" class="form-control" [(ngModel)]="firstname" [ngModelOptions]="{standalone: true}" placeholder="Please enter your first name" >
+    </div>
+    <div class="form-group">
+      <label for="">Surname</label>
+      <input type="text" class="form-control" [(ngModel)]="lastname" [ngModelOptions]="{standalone: true}" placeholder="Please enter your last name">
+    </div>
+    <div class="form-group">
+      <label for="">Email</label>
+      <input type="text" class="form-control" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Please enter your email address">
+    </div>
+    <div class="form-group">
+      <label for="">Are you a performer</label>
+      <select name="isPerformer" class="form-control" [(ngModel)]="isPerformer" >
+        <option value="{{true}}"  > Yes </option>
+        <option value="{{false}}" > No </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">Select an event</label>
+      <select name="eventname" class="form-control" [(ngModel)]="eventname" >
+        <option *ngFor="let e of events; index as i" value="{{events[i].EventName}}" > {{events[i].EventName}} </option>
+      </select>
+    </div>
+    <div class="form-group text-center">
+      <label for="">How many seats would you like?</label>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-round" type="" (click)="onDecrement()" >-</button>
+        </div>
+        <div class="col" >
+          <input class="form-control text-center"value={{numberOfSeats}} >
+        </div>
+        <div class="col">
+          <button class="btn btn-round" type="" (click)="onIncrement()" >+</button>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <button class="btn btn-primary " style="text-align: center;" (click)="onSubmit()" >Submit</button>
+    </div>
+
+  </div>
+
+</form>

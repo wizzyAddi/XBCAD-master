@@ -1,0 +1,35 @@
+.navbar-brand{
+  font-size: 40px !important;
+  color: #95CA3D !important
+}
+
+.nav-item{
+  margin-right: 20px !important;
+  border-bottom: 1px solid transparent;
+  transition: 0.2s ease;
+}
+
+.nav-item:hover{
+  margin-right: 20px !important;
+   border-bottom: 1px solid #95CA3D;
+}
+
+.active{
+   color: #95CA3D !important;
+}
+
+
+
+.nav-link{
+  color: #333!important;
+  transition: 0.2s ease;
+}
+.nav-link:hover{
+  color: #95CA3D !important;
+}
+
+
+
+form{
+  margin:500px;
+}

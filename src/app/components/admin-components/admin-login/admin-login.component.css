@@ -1,0 +1,62 @@
+.container-fluid{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.623) 63%, rgba(0, 0, 0, 0.507) 97%), url('../../../../assets/landing2.jpg');
+  height: 100vh;
+  padding-top: 200px;
+}
+
+.login-container{
+
+  background-color: #fefefe26;
+  padding: 70px;
+  width: 500px;
+  margin: auto;
+  border: 3px solid #A0B561;
+  border-radius: 20px;
+}
+
+.login-container label{
+
+  font-size: 25px;
+  color: #fefefe
+}
+
+.form-text{
+
+  color: #fefefe !important
+}
+
+::placeholder{
+  color: rgb(194, 194, 194);
+}
+
+.form-control{
+
+  background-color: transparent;
+  color: #fff;
+  font-size: 20px !important;
+}
+
+.form-control:focus{
+  border-color: #A0B561 !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6) !important;
+}
+
+.btn-primary {
+
+  color: #fff !important;
+  background-color: #A0B561 !important;
+  border-color: #A0B561 !important;
+  width: 140px !important;
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+.btn-primary:hover{
+  color: #A0B561 !important;
+  background-color: #a0b5617c !important;
+}
+
+.btn-primary:focus{
+  border-color: #A0B561 !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6) !important;
+}

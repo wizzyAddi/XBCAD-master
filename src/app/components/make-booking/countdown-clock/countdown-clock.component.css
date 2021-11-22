@@ -1,0 +1,15 @@
+.jumbotron{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.623) 63%, rgba(0, 0, 0, 0.507) 97%), url('../../../../assets/landing2.jpg');
+  background-size: cover;
+  height: 500px;
+  color: #fefefe;
+}
+
+.jumbotron h1{
+  font-size: 70px !important;
+}
+
+/* .jumbotron .timeDisplay{
+  font-size: 18px !important;
+} */
+

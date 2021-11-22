@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "raak-c10df": {
+      "hosting": {
+        "Raak-App": [
+          "raak-c10df"
+        ]
+      }
+    }
+  }
+}
