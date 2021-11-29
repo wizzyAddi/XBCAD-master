@@ -1,7 +1,8 @@
-export class Booking {
+export class Performer {
   fName: string;
   lName: string;
   email:string;
-  seats: number;
+  cellphone: string;
+  event: string;
   date: Date;
 }

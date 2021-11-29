@@ -16,9 +16,11 @@ export class MakeBookingComponent implements OnInit {
   email: string;
   numberOfSeats: number = 0;
   eventname: string;
+  cellphone: string;
   events: RaakEvent[] = [];
   index: number = 0;
   isPerformer: boolean = false;
+  date: string;
   ngOnInit(): void {
 
     this.events = this.eventService.GetEvents();
@@ -52,16 +54,14 @@ export class MakeBookingComponent implements OnInit {
 
   bookGuest(){
     let booking = {
-      Id: "",
-      Firstname: this.firstname,
-      Lastname: this.lastname,
-      Email: this.email,
-      NumberOfSeats: this.numberOfSeats,
-      EventName: this.eventname
-
+      fName: this.firstname,
+      lName: this.lastname,
+      email: this.email,
+      seats: this.numberOfSeats,
+      date: new Date()
     }
 
-    let isBooked = this.bookingService.AddBooking(booking);
+    let isBooked = this.bookingService.AddBooking(booking, this.cellphone);
     //console.log(isBooked)
     if(isBooked)
       alert('User has been booked for this event')
@@ -71,20 +71,39 @@ export class MakeBookingComponent implements OnInit {
   }
 
   bookPerformer(){
-    let booking = {
-      Firstname: this.firstname,
-      Lastname: this.lastname,
-      Email: this.email,
-      EventName: this.eventname,
-
+    let performer = {
+      fName: this.firstname,
+      lName: this.lastname,
+      email: this.email,
+      cellphone: this.cellphone,
+      event: this.eventname,
+      date: this.getEventDate()
     }
 
-    let isBooked = this.bookingService.PerformerRequest(booking);
+    alert(performer.date)
+
+    let isBooked = this.bookingService.PerformerRequest(performer);
     if(isBooked)
       alert('User has been booked for this event')
     else{
       alert('User could not be booked');
     }
+  }
+
+
+  getEventDate(){
+
+    let date;
+    for(let i = 0; i < this.events.length; i++){
+
+      if(this.eventname == this.events[i].EventName){
+        date = this.events[i].Date;
+        console.log(date)
+        alert(date)
+        break;
+      }
+    }
+    return date;
   }
 
   resetForm(){

@@ -1,0 +1,23 @@
+.circle{
+  height: 210px;
+  width: 210px;
+  border: 2px solid green;
+  border-radius: 100%;
+  margin: auto;
+  position: relative;
+  animation: open 0.7s ease-out 1
+}
+
+.circle>p {
+  color: green;
+  padding: 90px 0;
+  font-size: 20px;
+}
+
+@keyframes open {
+  0% {border-width: 100px;}
+  25% {border-width: 70px;}
+  50% {border-width: 40px;}
+  75% {border-width: 20px;}
+  100% {border-width: 10px;}
+}

@@ -1,0 +1,7 @@
+.my-container{
+  height: 70vh;
+  border: 1px solid #95CA3D;
+  border-radius: 10px;
+  margin:60px;
+  width: 400px
+}

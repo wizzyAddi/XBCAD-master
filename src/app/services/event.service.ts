@@ -1,33 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireStorage } from '@angular/fire/storage'
 import { RaakEvent } from '../models/raak-event.model';
-
+import { Upload } from '../models/upload'
+import { UploadService } from './upload.service'
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  constructor(private fireDatabase: AngularFireDatabase) { }
+  constructor(private fireDatabase: AngularFireDatabase ) { }
 
   events: RaakEvent[] = [];
 
   AddEvent(event: RaakEvent){
 
-    var ref = this.fireDatabase.database.ref("Events")
-
-    let index = 0;
+    let day = event.Date.getDate();
+    let month = event.Date.getMonth();
+    let year = event.Date.getFullYear();
+    let dateString = `${year}-${(month + 1)}-${day}`;
+    var ref = this.fireDatabase.database.ref(`Events/${dateString}`)
 
     try{
 
-      ref.get().then((snapshot) => {
-
-        index = snapshot.numChildren() + 1;
-        console.log(snapshot.numChildren())
-        event.EventID = index.toString();
-        this.fireDatabase.database.ref(`Events/${index}`).set(event)
-      })
-
-      return true;
+     ref.set(event);
 
     }catch(err){
       throw err;
@@ -40,15 +36,14 @@ export class EventService {
     try{
       ref.get().then((snapshot) => {
         snapshot.forEach(x => {
-
+          console.log(x.key)
           let event = {
-
-            EventID: x.val().EventID,
             EventName: x.val().EventName,
             Description: x.val().Description,
-            Date: x.val().Date,
+            Date: new Date(x.key),
             SeatsAvailable: x.val().SeatsAvailable,
-            Performers: x.val().Performers
+            Performers: x.val().Performers,
+            ImagePath: x.val().ImagePath
           }
 
           this.events[index] = event;
@@ -67,7 +62,7 @@ export class EventService {
 
   UpdateEventDetails(event: RaakEvent){
 
-    var ref = this.fireDatabase.database.ref(`Events/${event.EventID}`);
+    var ref = this.fireDatabase.database.ref(`Events/${event.Date}`);
 
     try{
       console.log(event)

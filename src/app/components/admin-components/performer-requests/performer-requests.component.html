@@ -7,18 +7,27 @@
       <th scope="col">Firstname</th>
       <th scope="col">Lastname</th>
       <th scope="col">Email</th>
+      <th scope="col">Cellphone</th>
       <th scope="col">Event</th>
+      <th scope="col">Date selected</th>
       <th scope="col">Accept/Reject performer</th>
     </thead>
-    <tbody>
+    <tbody *ngIf="isPerformers" >
       <tr *ngFor="let e of PerfomerRequests; index as i">
-        <th scope="row">{{e.firstname}}</th>
-        <th scope="row">{{e.lastname}}</th>
+        <th scope="row">{{e.fName}}</th>
+        <th scope="row">{{e.lName}}</th>
         <th scope="row">{{e.email}}</th>
-        <th scope="row">{{e.eventname}}</th>
+        <th scope="row">{{e.cellphone}}</th>
+        <th scope="row">{{e.event}}</th>
+        <th scope="row">{{e.date}}</th>
         <th scope="row" class="text-center"><button class="btn btn-success mr-3" type=""
             (click)="OnAccept(e)">Accept</button><button class="btn btn-danger ml-2" type=""
             (click)="OnDelete(e)">Reject</button></th>
+      </tr>
+    </tbody>
+    <tbody *ngIf="!isPerformers" >
+      <tr>
+        <th colspan="7" class="text-center display-4">No performers to display</th>
       </tr>
     </tbody>
   </table>

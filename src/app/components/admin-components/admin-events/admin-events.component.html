@@ -10,10 +10,26 @@
       <label for="">Description</label>
       <input type="text" class="form-control" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" placeholder="Give it an epic description">
     </div>
-    <div class="form-group">
-      <label for="">Date</label>
-      <input type="text" class="form-control" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" placeholder="Enter a date">
+    <div class="form-group text-center mt-3">
+      <mat-form-field appearance="fill" style="width: 370px !important;" >
+        <mat-label style="color: #95CA3D !important;">Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}" [(ngModel)]="date">
+        <mat-datepicker-toggle style="color: #95CA3D !important;" matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker style="color: #95CA3D !important;" #picker></mat-datepicker>
+      </mat-form-field>
     </div>
+    <div class="form-group">
+      <label for="">Upload an image banner for the event</label>
+      <input type="file" class="form-control" [(ngModel)]="image" (change)="onChange($event)" [ngModelOptions]="{standalone: true}" placeholder="Upload image">
+    </div>
+    <!-- <div *ngIf="isDoneLoading">
+      <img class="imageView" src="{{url}}" alt="image here">
+    </div>
+    <div *ngIf="!isDoneLoading">
+
+      <div class="loader"></div>
+
+    </div> -->
     <div class="form-group text-center">
       <label for="">How many will be available?</label>
       <div class="row">

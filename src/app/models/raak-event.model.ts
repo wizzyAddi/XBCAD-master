@@ -1,8 +1,7 @@
 export class RaakEvent {
-  EventID: string;
   EventName: string;
   Description: string;
-  Date: string;
+  Date: Date;
   SeatsAvailable: number;
-  Performers: string[] = [];
+  ImagePath: string = "";
 }

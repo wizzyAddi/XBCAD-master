@@ -24,13 +24,13 @@
 }
 
 .nav-item{
-  margin-right: 20px !important;
+  margin-right: 25px !important;
   border-bottom: 1px solid transparent;
   transition: 0.2s ease;
 }
 
 .nav-item:hover{
-  margin-right: 20px !important;
+  margin-right: 25px !important;
    border-bottom: 1px solid #95CA3D;
 }
 
@@ -41,6 +41,12 @@
 .nav-link:hover{
   color: #fff !important;
   color: #95CA3D !important;
+}
+
+.feature-image{
+  height: 500px;
+  width:500px;
+  object-fit: cover;
 }
 
 /* GLOBAL STYLES

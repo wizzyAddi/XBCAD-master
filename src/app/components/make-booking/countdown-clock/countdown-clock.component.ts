@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { RaakEvent } from 'src/app/models/raak-event.model';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-countdown-clock',
@@ -8,12 +10,13 @@ import { interval, Subscription } from 'rxjs';
 })
 export class CountdownClockComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private eventSevice: EventService) { }
 
   private subscription: Subscription;
 
+  events: RaakEvent[] = [];
   public dateNow = new Date();
-  public dDay = new Date('Nov 24 2021 00:00:00');
+  public dDay = new Date("2021/12/30");
   milliSecondsInASecond = 1000;
   hoursInADay = 24;
   minutesInAnHour = 60;
@@ -25,13 +28,12 @@ export class CountdownClockComponent implements OnInit, OnDestroy {
   public hoursToDday;
   public daysToDday;
   public timeToDisplay: string;
-
-  private getTimeDifference(){
+  private getTimeDifference() {
     this.timeDifference = this.dDay.getTime() - new Date().getTime();
     this.allocateTimeUnits(this.timeDifference);
   }
 
-  private allocateTimeUnits(timeDifference){
+  private allocateTimeUnits(timeDifference) {
 
     this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
     this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
@@ -41,28 +43,48 @@ export class CountdownClockComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = interval(1000).subscribe( x => {
+    this.events = this.eventSevice.GetEvents();
+    console.log(this.events)
+    this.GetLatestDate()
+    this.subscription = interval(1000).subscribe(x => {
       this.getTimeDifference();
     })
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
 
     this.subscription.unsubscribe();
   }
 
-  appendNumber(num: number){
+  appendNumber(num: number) {
 
-    if(num < 10){
-      var formattedNumber = ("0" + num ).slice(-2);
+    if (num < 10) {
+      var formattedNumber = ("0" + num).slice(-2);
       return formattedNumber;
 
     }
-    else{
+    else {
       return num;
     }
-
-
   }
 
+  GetLatestDate() {
+
+
+
+    let latestDate;
+    setTimeout((x) => {
+      let temp = new Date("1997/01/01");
+      for(let i = 0; i <= this.events.length-1; i++){
+
+        if (temp.getTime() < this.events[i].Date.getTime()) {
+          temp = this.events[i].Date ;
+          console.log(temp)
+        }
+
+      }
+
+      this.dDay = temp;
+    }, 1000)
+  }
 }
