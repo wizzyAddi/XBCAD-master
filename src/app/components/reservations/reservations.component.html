@@ -1,17 +1,23 @@
 <app-navbar></app-navbar>
 <form>
   <div class="container-fluid" style="width: 400px; margin-top: 50px; margin-bottom: 100px" >
+    <div *ngIf="bookingComplete" class="alert alert-{{errorCode}}" role="alert">
+      {{bookingConfirmation}}
+    </div>
     <div class="form-group">
       <label for="">Fullname</label>
       <input type="text" class="form-control" [(ngModel)]="fullname" [ngModelOptions]="{standalone: true}" placeholder="Please enter your fullname" >
+      <div *ngIf="isNameError" class="text-danger text-center" >Fullname is required</div>
     </div>
     <div class="form-group">
       <label for="">cellphone</label>
       <input type="text" class="form-control" [(ngModel)]="cellphone" [ngModelOptions]="{standalone: true}" placeholder="Please enter your cellphone numbers">
+      <div *ngIf="isCellphoneError" class="text-danger text-center" >Cellphone is required</div>
     </div>
     <div class="form-group">
       <label for="">Enter a time</label>
       <input type="time" class="form-control" [(ngModel)]="time" [ngModelOptions]="{standalone: true}" placeholder="Please enter a time">
+      <div *ngIf="isTimeError" class="text-danger text-center" >Time is required</div>
     </div>
 
     <div class="text-center mt-5">

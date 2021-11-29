@@ -27,7 +27,6 @@ export class BookingService {
     let year = date.getFullYear();
     let dateString = `${year}-${(month + 1)}-${day}`;
 
-    console.log(booking.date)
     try {
       var ref = this.fireDb.database.ref(`Bookings/${dateString}/${cellphone}`).set(booking);
       return true;
@@ -105,7 +104,6 @@ export class BookingService {
     let year = date.getFullYear();
     let dateString = `${year}-${(month + 1)}-${day}`;
     try {
-      console.log(performer)
       this.fireDb.database.ref(`PerformerRequests/${dateString}/${performer.cellphone}`).set(performer);
       return true;
 

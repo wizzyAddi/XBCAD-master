@@ -11,7 +11,7 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class AdminReportsComponent implements OnInit {
 
-  constructor(private eventService: EventService,private bookingService: BookingService) { }
+  constructor(private eventService: EventService, private bookingService: BookingService) { }
 
   events: RaakEvent[] = [];
   bookings: Booking[] = [];
@@ -19,13 +19,13 @@ export class AdminReportsComponent implements OnInit {
   numberOfBookings: number = 0;
   SeatsAvailable: number = 0;
   perfromersToDisplay: any[] = [];
+  isReportError: boolean = false;
   ngOnInit(): void {
+   setTimeout(() => {
     this.events = this.eventService.GetEvents();
     this.bookings = this.bookingService.GetBookings();
     this.perfromers = this.bookingService.GetConfirmedPerformers();
-    console.log(this.bookings);
-    console.log(this.perfromers);
-    console.log(this.events);
+   }, 2000);
   }
 
   eventSelector: string;
@@ -34,49 +34,59 @@ export class AdminReportsComponent implements OnInit {
   dateToDisplay: string;
   //Get all events
 
-  onSelected(){
-    this.events.forEach( x => {
-      if(this.eventSelector == x.EventName)
-      this.event = x;
-      this.isGenerate = true;
-      this.generateReport();
-      console.log(x.EventName)
-    })
-    this.FilterBookings()
-    this.GetPerformers();
+  onSelected() {
+
+    if (this.eventSelector == undefined || this.eventSelector == "") {
+      this.isReportError = true;
+    }
+    else {
+      this.events.forEach(x => {
+        if (this.eventSelector == x.EventName)
+          this.event = x;
+        this.isGenerate = true;
+        this.generateReport();
+        console.log(x.EventName)
+      })
+      this.FilterBookings()
+      this.GetPerformers();
+    }
   }
 
-  generateReport(){
+  generateReport() {
     let day = this.event.Date.getDate();
     let month = this.event.Date.getMonth();
     let year = this.event.Date.getFullYear();
     this.dateToDisplay = `${day}/${month}/${year}`
   }
 
-  FilterBookings(){
+  FilterBookings() {
     let index = 0;
     this.bookings.forEach((x) => {
-      for(let i = 0; i < this.events.length; i++){
-        if(x.date.getMonth()-1 == this.events[i].Date.getMonth()-1 && x.date.getDay() == this.events[i].Date.getDay()){
+      for (let i = 0; i < this.events.length; i++) {
+        if (x.date.getMonth() - 1 == this.events[i].Date.getMonth() - 1 && x.date.getDay() == this.events[i].Date.getDay()) {
           this.numberOfBookings++;
           this.SeatsAvailable = this.events[i].SeatsAvailable;
+          index++;
         }
-        index++;
+
       }
     })
   }
   //Get all confirmed perfromers
-  GetPerformers(){
+  GetPerformers() {
     let index = 0;
     this.perfromers.forEach((x) => {
-      for(let i = 0; i < this.events.length; i++){
-        if(x.date.getMonth()-1 == this.events[i].Date.getMonth()-1 && x.date.getDay() == this.events[i].Date.getDay()){
+      for (let i = 0; i < this.events.length; i++) {
+        if (x.date.getMonth() - 1 == this.events[i].Date.getMonth() - 1 && x.date.getDay() == this.events[i].Date.getDay()) {
           this.perfromersToDisplay[index] = x;
+          index++;
         }
-        index++;
+
       }
     })
+  }
 
-    console.log(this.perfromersToDisplay)
+  onTextChanged(){
+    this.isReportError = false;
   }
 }

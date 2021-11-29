@@ -4,11 +4,13 @@
     <h2>Create an epic event </h2>
     <div class="form-group">
       <label for="">Event name</label>
-      <input type="text" class="form-control" [(ngModel)]="eventname" [ngModelOptions]="{standalone: true}" placeholder="Create en epic name" >
+      <input type="text" class="form-control" (change)="onTextChanged()" [(ngModel)]="eventname" [ngModelOptions]="{standalone: true}" placeholder="Create en epic name" >
+      <div *ngIf="isNameError" class="text-danger" >Event name is required</div>
     </div>
     <div class="form-group">
       <label for="">Description</label>
-      <input type="text" class="form-control" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" placeholder="Give it an epic description">
+      <input type="text" class="form-control" (change)="onTextChanged()" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" placeholder="Give it an epic description">
+      <div *ngIf="isDescError" class="text-danger" >Event description is required</div>
     </div>
     <div class="form-group text-center mt-3">
       <mat-form-field appearance="fill" style="width: 370px !important;" >
@@ -17,10 +19,12 @@
         <mat-datepicker-toggle style="color: #95CA3D !important;" matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker style="color: #95CA3D !important;" #picker></mat-datepicker>
       </mat-form-field>
+      <div *ngIf="isDateError" class="text-danger text-left" >{{dateErrorMessage}}</div>
     </div>
     <div class="form-group">
       <label for="">Upload an image banner for the event</label>
       <input type="file" class="form-control" [(ngModel)]="image" (change)="onChange($event)" [ngModelOptions]="{standalone: true}" placeholder="Upload image">
+      <div *ngIf="isImageError" class="text-danger" >Event image is required</div>
     </div>
     <!-- <div *ngIf="isDoneLoading">
       <img class="imageView" src="{{url}}" alt="image here">
@@ -43,6 +47,7 @@
           <button class="btn btn-round" type="" (click)="onIncrement()" >+</button>
         </div>
       </div>
+      <div *ngIf="isSeatsError" class="text-danger" >Number of seats is required</div>
     </div>
     <div class="text-center mt-5">
       <button class="btn btn-primary " style="text-align: center;" (click)="onSubmit()" >Submit</button>

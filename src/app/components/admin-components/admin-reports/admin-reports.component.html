@@ -3,12 +3,13 @@
   <div class="container mt-5">
     <h2 class="text-center">Generate event reports</h2>
     <div class="input-group " style="width: 400px !important; margin: auto">
-      <select name="" id="" [(ngModel)]="eventSelector" class="form-control" value="Selecter">
+      <select name="" id="" (change)="onTextChanged()" [(ngModel)]="eventSelector" class="form-control" value="Selecter">
         <option selected="true" value="">Select an event</option>
         <option *ngFor="let e of events; index as i" value="{{e.EventName}}">{{e.EventName}}</option>
       </select>
       <button class="btn btn-outline-success" (click)="onSelected()">Generate</button>
     </div>
+    <div *ngIf="isReportError" class="text-danger text-center" >Event name is required</div>
   </div>
 
   <div *ngIf="isGenerate" class="container mt-5" style="width: 800px !important">
@@ -25,14 +26,14 @@
     <div *ngIf="isGenerate" class="row mt-5">
       <div class="container col-6">
         <h2 class="lead" style="font-size: 30px; margin-top: 120px">Performers booked</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, minima.</p>
+        <p>Thi section summarises the number of performers that have been booked</p>
       </div>
       <div class="col-6 text-center">
         <div class="circle text-center mb-4">
           <p>{{perfromersToDisplay.length}}</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li  *ngFor="let p of perfromersToDisplay; index as i" class="list-group-item">{{p.fName}} {{p.lName}}</li>
+          <li *ngFor="let p of perfromersToDisplay; index as i" class="list-group-item">{{p.fName}} {{p.lName}}</li>
         </ul>
       </div>
     </div>
@@ -40,7 +41,7 @@
     <div class="row" style="margin-top: 200px !important">
       <div class="container col-6">
         <h2 class="lead" style="font-size: 30px; margin-top: 120px">Bookings confirmed</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, minima.</p>
+        <p>This sections summarises the number of bookings that have been made</p>
       </div>
       <div class="col-6 text-center">
         <div class="circle text-center mb-4">

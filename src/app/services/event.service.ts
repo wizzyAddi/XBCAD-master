@@ -36,7 +36,6 @@ export class EventService {
     try{
       ref.get().then((snapshot) => {
         snapshot.forEach(x => {
-          console.log(x.key)
           let event = {
             EventName: x.val().EventName,
             Description: x.val().Description,
@@ -65,7 +64,6 @@ export class EventService {
     var ref = this.fireDatabase.database.ref(`Events/${event.Date}`);
 
     try{
-      console.log(event)
       ref.update(event);
       return true;
 
