@@ -212,7 +212,7 @@ export class BookingService {
     }
   }
 
-  MakeReservation(name:string, cellphone: string, time: string){
+  MakeReservation(name:string, cellphone: string, time: string, numberOfSeats){
 
     let date = new Date();
     let day = date.getDate();
@@ -220,7 +220,7 @@ export class BookingService {
     let year = date.getFullYear();
     let dateString = `${year}-${(month + 1)}-${day}`;
     try {
-      var ref = this.fireDb.database.ref(`reservations/${dateString}/${cellphone}`).set({name: name, cellphone: cellphone, time: time});
+      var ref = this.fireDb.database.ref(`reservations/${dateString}/${cellphone}`).set({name: name, cellphone: cellphone, time: time, seats: numberOfSeats});
       return true;
     } catch (err) {
       throw err;

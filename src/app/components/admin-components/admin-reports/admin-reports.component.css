@@ -1,7 +1,7 @@
 .circle{
   height: 210px;
   width: 210px;
-  border: 2px solid green;
+  border: 5px solid #95CA3D;
   border-radius: 100%;
   margin: auto;
   position: relative;
@@ -9,9 +9,17 @@
 }
 
 .circle>p {
-  color: green;
+  color: #95CA3D;
   padding: 90px 0;
   font-size: 20px;
+}
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  font-weight: bold;
+  color: #7aa731;
+  letter-spacing: -.05rem;
 }
 
 @keyframes open {

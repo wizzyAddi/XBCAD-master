@@ -19,7 +19,21 @@
       <input type="time" class="form-control" [(ngModel)]="time" [ngModelOptions]="{standalone: true}" placeholder="Please enter a time">
       <div *ngIf="isTimeError" class="text-danger text-center" >Time is required</div>
     </div>
-
+    <div class="form-group text-center">
+      <label for="">How many seats would you like?</label>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-round" type="" (click)="onDecrement()" >-</button>
+        </div>
+        <div class="col" >
+          <input class="form-control text-center"value={{numberOfSeats}} >
+        </div>
+        <div class="col">
+          <button class="btn btn-round" type="" (click)="onIncrement()" >+</button>
+        </div>
+        <div *ngIf="isSeatsError" class="text-danger text-center" >Number of seats is required</div>
+      </div>
+    </div>
     <div class="text-center mt-5">
       <button class="btn btn-primary " style="text-align: center;" (click)="onSubmit()" >Submit</button>
     </div>

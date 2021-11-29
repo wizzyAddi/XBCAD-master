@@ -1,0 +1,25 @@
+[debug] [2021-11-29T14:18:40.802Z] ----------------------------------------------------------------------
+[debug] [2021-11-29T14:18:40.804Z] Command:       D:\Node\node.exe C:\Users\Jason\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-11-29T14:18:40.804Z] CLI Version:   9.23.0
+[debug] [2021-11-29T14:18:40.804Z] Platform:      win32
+[debug] [2021-11-29T14:18:40.804Z] Node Version:  v14.16.0
+[debug] [2021-11-29T14:18:40.805Z] Time:          Mon Nov 29 2021 16:18:40 GMT+0200 (South Africa Standard Time)
+[debug] [2021-11-29T14:18:40.805Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-11-29T14:18:40.856Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-29T14:18:40.856Z] > authorizing via signed-in user (jason.jiyane@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Documents\Schoolwork\XBCAD7329\Angular Firebase tutorial\XBCAD-master
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

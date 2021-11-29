@@ -5,3 +5,17 @@
   margin:60px;
   width: 400px
 }
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  font-weight: bold;
+  color: #95CA3D;
+  letter-spacing: -.05rem;
+}
+
+.featurette-divider {
+  margin: 2rem 0;
+  color: #95CA3D;
+  /* Space out the Bootstrap <hr> more */
+}

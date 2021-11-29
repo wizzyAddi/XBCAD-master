@@ -6,8 +6,8 @@
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div *ngFor="let m of menuItems; index as i" class="col 4">
-          <div class="card "  >
-              <img class="menu-image" src="{{m.ImagePath}}" alt="">
+          <div class="card ">
+            <img class="menu-image" src="{{m.ImagePath}}" alt="">
             <div class="card-body">
               <h5 class="card-title">{{m.Name}}</h5>
               <p class="card-text">{{m.Description}}</p>
@@ -25,3 +25,4 @@
   </div>
 
 </main>
+

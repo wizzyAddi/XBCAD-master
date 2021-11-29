@@ -1,36 +1,32 @@
 <app-admin-nav></app-admin-nav>
-<div class="container-fluid">
+<div class="container">
 
-  <h2 class="display-4 text-center mt-5">Welcome back admin</h2>
+  <hr class="featurette-divider">
+  <h1 class="featurette-heading text-center">Welcome back admin</h1>
 
-  <div class="container mt-5" style="margin-left: 350px !important">
-    <div class="row">
-      <div class="container my-container col-6 text-center">
-        <h2 class="mb-5">Upcoming events</h2>
+  <hr class="featurette-divider">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+
+      <div class="card ">
+        <h2 class="featurette-heading text-center">Upcoming events</h2>
+        <a class="btn btn-success" [routerLink]="['/admin-event']" style="margin-top: 5%">Add new</a>
         <ul class="list-group list-group-flush">
           <li *ngIf="!isEvents" class="list-group-item text-center">No upcoming eventss</li>
           <li *ngFor="let e of events; index as i" class="list-group-item text-center">{{i + 1}}.&nbsp;{{e.EventName}}
             &nbsp; - &nbsp; {{e.Date.toDateString()}}</li>
         </ul>
-        <a class="btn btn-success" [routerLink]="['/admin-event']" style="margin-top: 100%">Add new</a>
       </div>
-      <div class="container my-container col-6 text-center">
-        <h2 class="mb-5">Performer requests</h2>
+
+      <div class="card">
+        <h2 class="featurette-heading text-center">Performer requests</h2>
+        <a class="btn btn-success" [routerLink]="['/admin-requests']" style="margin-top: 5%">View all</a>
         <ul class="list-group list-group-flush">
           <li *ngIf="!isPerfromers" class="list-group-item text-center">No perfromer requests</li>
           <li *ngFor="let p of performers; index as i" class="list-group-item text-center">{{i + 1}}.&nbsp;{{p.fName}}
             &nbsp; {{p.lName}}</li>
         </ul>
-        <a class="btn btn-success" [routerLink]="['/admin-requests']" style="margin-top: 100%">View all</a>
       </div>
-      <!-- <div class="container my-container col-4">
-        <h2 class="text-center mb-5">Contact messages</h2>
-        <ul class="list-group list-group-flush">
-          <li *ngIf="!isContacts" class="list-group-item text-center">No new messagess</li>
-          <li *ngFor="let c of contactMessages; index as i" class="list-group-item text-center list-group-item-action">{{i +
-            1}}.&nbsp;{{c.fullname}} &nbsp; {{c.subject}}</li>
-        </ul>
-      </div> -->
     </div>
   </div>
 </div>

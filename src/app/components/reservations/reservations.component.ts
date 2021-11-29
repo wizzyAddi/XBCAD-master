@@ -21,11 +21,13 @@ export class ReservationsComponent implements OnInit {
   bookingComplete: boolean = false;
   bookingConfirmation: string;
   errorCode: string;
+  numberOfSeats: number = 0;
+  isSeatsError: boolean= false;
   ngOnInit(): void {
   }
 
   onSubmit(){
-    let isBooked = this.bookingService.MakeReservation(this.fullname, this.cellphone, this.time);
+    let isBooked = this.bookingService.MakeReservation(this.fullname, this.cellphone, this.time, this.numberOfSeats);
     this.bookingComplete = true;
     if(isBooked){
       this.errorCode = "primary"
@@ -36,7 +38,16 @@ export class ReservationsComponent implements OnInit {
       this.bookingConfirmation = "Reservation could not be set"
     }
   }
+  onDecrement() {
+    this.onTextChanged()
+    if (this.numberOfSeats > 0)
+      this.numberOfSeats--;
+  }
 
+  onIncrement() {
+    this.onTextChanged()
+    this.numberOfSeats++;
+  }
   resetForm(){
     this.fullname = "";
     this.cellphone = "";
@@ -64,5 +75,9 @@ export class ReservationsComponent implements OnInit {
     else{
       return false
     }
+  }
+
+  onTextChanged(){
+
   }
 }

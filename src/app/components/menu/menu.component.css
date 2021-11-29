@@ -1,5 +1,6 @@
 .menu-image {
   height: 300px;
-  width: 420px;
+  width: 100%;
+  max-width: 420px;
   object-fit: cover;
 }
