@@ -44,7 +44,6 @@ export class CountdownClockComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.events = this.eventSevice.GetEvents();
-    console.log(this.events)
     this.GetLatestDate()
     this.subscription = interval(1000).subscribe(x => {
       this.getTimeDifference();
@@ -79,7 +78,6 @@ export class CountdownClockComponent implements OnInit, OnDestroy {
 
         if (temp.getTime() < this.events[i].Date.getTime()) {
           temp = this.events[i].Date ;
-          console.log(temp)
         }
 
       }
