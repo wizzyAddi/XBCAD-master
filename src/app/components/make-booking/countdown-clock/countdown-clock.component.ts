@@ -16,29 +16,27 @@ export class CountdownClockComponent implements OnInit, OnDestroy {
 
   events: RaakEvent[] = [];
   public dateNow = new Date();
-  public dDay = new Date("2021/12/30");
-  milliSecondsInASecond = 1000;
-  hoursInADay = 24;
-  minutesInAnHour = 60;
-  SecondsInAMinute = 60;
-
+  public dDay = new Date("2000/01/01");
   public timeDifference;
   public secondsToDday;
   public minutesToDday
   public hoursToDday;
   public daysToDday;
   public timeToDisplay: string;
+
+
+
   private getTimeDifference() {
-    this.timeDifference = this.dDay.getTime() - new Date().getTime();
+    this.timeDifference = this.dDay.getTime() - this.dateNow.getTime() ;
     this.allocateTimeUnits(this.timeDifference);
   }
 
   private allocateTimeUnits(timeDifference) {
 
-    this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
-    this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
-    this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
-    this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+    this.secondsToDday = Math.floor((timeDifference) % (1000 * 60) / (1000))
+    this.minutesToDday = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    this.hoursToDday = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    this.daysToDday = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     this.timeToDisplay = `${this.appendNumber(this.daysToDday)}  :  ${this.appendNumber(this.hoursToDday)} : ${this.appendNumber(this.minutesToDday)} `;
   }
 

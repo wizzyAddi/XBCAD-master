@@ -4,4 +4,5 @@ export class Booking {
   email:string;
   seats: number;
   date: Date;
+  cellphone?: string;
 }

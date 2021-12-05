@@ -23,7 +23,7 @@
     <div class="form-group">
       <label for="">cellphone</label>
       <input type="text" class="form-control" (change)="onTextChanged()" [(ngModel)]="cellphone" [ngModelOptions]="{standalone: true}" placeholder="Please enter your cellphone numbers">
-      <div *ngIf="isCellphoneError" class="text-danger text-center" >Cellphone number is required</div>
+      <div *ngIf="isCellphoneError" class="text-danger text-center" >{{cellPhoneErrorMessage}}</div>
     </div>
     <div class="form-group">
       <label for="">Are you a performer</label>
@@ -35,10 +35,11 @@
     </div>
     <div class="form-group">
       <label for="">Select an event</label>
-      <select name="eventname" class="form-control" (change)="onTextChanged()" [(ngModel)]="eventname" >
-        <option *ngFor="let e of events; index as i" value="{{events[i].EventName}}" > {{events[i].EventName}} </option>
+      <select name="eventname" class="form-control" (change)="checkSeatsRemaing($event)" [(ngModel)]="eventname" >
+        <option *ngFor="let e of events; index as i"[ngValue]="events[i].EventName" > {{events[i].EventName}} </option>
       </select>
-      <div *ngIf="isEventError" class="text-danger text-center" >Event is required</div>
+      <div class="{{numberOfSeatsClass}} text-center" >{{numberOfSeatsMessage}}</div>
+      <div *ngIf="isEventError" class="text-danger text-center" > Please select an event </div>
     </div>
     <div class="form-group text-center">
       <label for="">How many seats would you like?</label>
@@ -52,7 +53,7 @@
         <div class="col">
           <button class="btn btn-round" type="" (click)="onIncrement()" >+</button>
         </div>
-        <div *ngIf="isSeatsError" class="text-danger text-center" >Number of seats is required</div>
+        <div *ngIf="isSeatsError" class="text-danger text-center" >{{numberOFSeatsMessage}}</div>
       </div>
     </div>
     <div class="text-center mt-5">

@@ -21,7 +21,7 @@ export class BookingService {
   AddBooking(booking: Booking, cellphone: string) {
 
     let index = 0;
-    let date = new Date();
+    let date = booking.date;
     let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
@@ -49,14 +49,15 @@ export class BookingService {
               lName: v.val().lName,
               email: v.val().email,
               seats: v.val().seats,
-              date: new Date(x.key)
+              date: new Date(x.key),
+              cellphone: v.key
             }
             index++;
           })
 
         })
       })
-
+      console.log(this.bookings)
       return this.bookings;
     } catch (err) {
       throw err;
