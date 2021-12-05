@@ -216,50 +216,52 @@ export class MakeBookingComponent implements OnInit {
 
   checkSeatsRemaing(event: any){
 
-    this.onTextChanged();
-    let numSeats = 0;
-    console.log(this.eventname)
+    if(!this.isPerformer){
+      this.onTextChanged();
+      let numSeats = 0;
+      console.log(this.eventname)
 
-    let eventToCheck;
+      let eventToCheck;
 
-    this.events.forEach((x) => {
+      this.events.forEach((x) => {
 
-      if(x.EventName == this.eventname){
-        eventToCheck = x;
-      }
-
-    })
-
-    //console.log(eventToCheck)
-    let found = false;
-    for(let i = 0; i < this.events.length; i++){
-
-      for(let x = 0; x < this.bookings.length; x++){
-        //console.log(this.bookings[x])
-        if(eventToCheck.Date.getTime() == this.bookings[x].date.getTime()){
-          found = true;
-          numSeats += this.bookings[x].seats;
-
+        if(x.EventName == this.eventname){
+          eventToCheck = x;
         }
+
+      })
+
+      //console.log(eventToCheck)
+      let found = false;
+      for(let i = 0; i < this.events.length; i++){
+
+        for(let x = 0; x < this.bookings.length; x++){
+          //console.log(this.bookings[x])
+          if(eventToCheck.Date.getTime() == this.bookings[x].date.getTime()){
+            found = true;
+            numSeats += this.bookings[x].seats;
+
+          }
+        }
+        if(found)
+        break;
       }
-      if(found)
-      break;
-    }
 
-    this.seatsRemaining = eventToCheck.SeatsAvailable - numSeats
+      this.seatsRemaining = eventToCheck.SeatsAvailable - numSeats
 
-    if(eventToCheck.SeatsAvailable == numSeats || this.seatsRemaining < 0){
+      if(eventToCheck.SeatsAvailable == numSeats || this.seatsRemaining < 0){
 
-      this.numberOfSeatsMessage = " There are no seats left for this event"
-      this.numberOfSeatsClass = "text-danger"
-      this.maxSeats = true;
-    }
+        this.numberOfSeatsMessage = " There are no seats left for this event"
+        this.numberOfSeatsClass = "text-danger"
+        this.maxSeats = true;
+      }
 
-    else{
+      else{
 
-      this.numberOfSeatsMessage = `There are ${this.seatsRemaining} seats available`
-      this.numberOfSeatsClass = "text-success"
-      this.maxSeats = false;
+        this.numberOfSeatsMessage = `There are ${this.seatsRemaining} seats available`
+        this.numberOfSeatsClass = "text-success"
+        this.maxSeats = false;
+      }
     }
   }
 

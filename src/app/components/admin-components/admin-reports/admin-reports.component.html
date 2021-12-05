@@ -3,7 +3,7 @@
   <div class="container mt-5">
     <h2 class="featurette-heading text-center" style="color: #95CA3D;">Generate event reports</h2>
     <div class="input-group " style="width: 400px !important; margin: auto">
-      <select name="" id="" (change)="onTextChanged()" [(ngModel)]="eventSelector" class="form-control"
+      <select name="eventSelector" id="" (change)="onTextChanged()" [(ngModel)]="eventSelector" class="form-control"
         value="Selecter">
         <option selected="true" value="">Select an event</option>
         <option *ngFor="let e of events; index as i" value="{{e.EventName}}">{{e.EventName}}</option>

@@ -16,7 +16,7 @@ export class CountdownClockComponent implements OnInit, OnDestroy {
 
   events: RaakEvent[] = [];
   public dateNow = new Date();
-  public dDay = new Date("2000/01/01");
+  public dDay = new Date();
   public timeDifference;
   public secondsToDday;
   public minutesToDday
@@ -71,7 +71,7 @@ export class CountdownClockComponent implements OnInit, OnDestroy {
 
     let latestDate;
     setTimeout((x) => {
-      let temp = new Date("1997/01/01");
+      let temp = new Date();
       for(let i = 0; i <= this.events.length-1; i++){
 
         if (temp.getTime() < this.events[i].Date.getTime()) {

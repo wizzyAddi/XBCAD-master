@@ -1,7 +1,7 @@
 <app-admin-nav></app-admin-nav>
 <form>
   <div class="container-fluid" style="width: 400px; margin-top: 50px; margin-bottom: 100px">
-    <h2>Post Menu Item</h2>
+    <h2 class="text-center">Create Menu Item</h2>
     <hr class="featurette-divider">
     <div class="form-group">
       <label for="">Item Category</label>
@@ -33,7 +33,7 @@
       <div *ngIf="isImageError" class="text-danger" >Item image is required</div>
     </div>
     <div class="text-center mt-5">
-      <button class="btn btn-primary " (click)="onSubmit()" style="text-align: center;">Post</button>
+      <button class="btn btn-primary " (click)="onSubmit()" style="text-align: center;">Add</button>
     </div>
 
   </div>

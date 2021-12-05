@@ -23,6 +23,7 @@ export class AdminReportsComponent implements OnInit {
   ngOnInit(): void {
    setTimeout(() => {
     this.events = this.eventService.GetEvents();
+    console.log(this.events)
     this.bookings = this.bookingService.GetBookings();
     this.perfromers = this.bookingService.GetConfirmedPerformers();
    }, 2000);
@@ -40,9 +41,12 @@ export class AdminReportsComponent implements OnInit {
       this.isReportError = true;
     }
     else {
+      console.log("Im here")
       this.events.forEach(x => {
-        if (this.eventSelector == x.EventName)
+        if (this.eventSelector == x.EventName){
           this.event = x;
+          console.log(this.event)
+        }
         this.isGenerate = true;
         this.generateReport();
         console.log(x.EventName)
@@ -63,7 +67,7 @@ export class AdminReportsComponent implements OnInit {
     let index = 0;
     this.bookings.forEach((x) => {
       for (let i = 0; i < this.events.length; i++) {
-        if (x.date.getMonth() - 1 == this.events[i].Date.getMonth() - 1 && x.date.getDay() == this.events[i].Date.getDay()) {
+        if (x.date.getTime() == this.events[i].Date.getTime()) {
           this.numberOfBookings++;
           this.SeatsAvailable = this.events[i].SeatsAvailable;
           index++;
